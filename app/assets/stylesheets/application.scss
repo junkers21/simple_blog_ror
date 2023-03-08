@@ -11,5 +11,22 @@
  * It is generally better to create a new file per style scope.
  *
  *= require_tree .
+ *= require bootstrap_icons/bootstrap-icons
  *= require_self
  */
+@import "bootstrap";
+
+.bg-dark-opacity-center{
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
+}
+
+.text-truncate-2 {
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.object-fit-cover{
+  object-fit: cover;
+}

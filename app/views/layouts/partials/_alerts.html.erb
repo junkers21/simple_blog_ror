@@ -1,0 +1,20 @@
+<% if !flash.now[:alert].blank? || !flash.notice.blank? %>
+  <div class="container mt-5">
+    <div class="row">
+      <div class="col-12">
+        <% unless flash.now[:alert].blank? %>
+          <div class="alert alert-danger">
+            <h4 class="alert-heading">Error saving!</h4>
+            <p class="mb-0"><%= flash.now[:alert] %></p>
+          </div>
+        <% end %>
+        <% unless flash.notice.blank? %>
+          <div class="alert alert-success">
+            <h4 class="alert-heading">Post saved!</h4>
+            <p class="mb-0"><%= flash.notice %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+<% end %>

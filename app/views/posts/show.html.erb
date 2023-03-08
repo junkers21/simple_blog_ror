@@ -1,0 +1,35 @@
+<div id="carouselExample" class="carousel slide">
+  <div class="carousel-inner">
+    <div class="carousel-item active ratio ratio-16x9">
+      <img src="<%= @post.get_picture_url %>" class="d-block w-100" alt="">
+      <div class="carousel-caption bg-dark-opacity-center">
+        <div class="d-flex align-items-center h-100 justify-content-center">
+          <div>
+            <span class="display-1"><%= @post.title %></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="container pt-5">
+  <div class="row mb-4">
+    <div class="col-10">
+      <h1 class="mb-0"><%= @post.title %></h1>
+      <p class="mb-0"><span class="fs-5">By <%= @post.author %></span> <span class="small"> <%= l(@post.created_at, format: :long) %></span></p>
+    </div>
+    <div class="col-2 text-end">
+      <a href="#confirmModal" class="btn btn-danger js-delete" data-bs-toggle="modal" data-confirm="are" data-url="<%= post_url(@post) %>" data-method="delete"><i class="bi bi-trash"></i></a>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <% @post.content.split("\n").each do |p| %>
+        <p><%= p %></p>
+      <% end %>
+    </div>
+  </div>
+</div>
