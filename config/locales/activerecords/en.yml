@@ -1,0 +1,8 @@
+en:
+  activerecord:
+    attributes:
+      post:
+        title: "Title"
+        author: "Author"
+        picture: "Picture"
+        content: "Content"

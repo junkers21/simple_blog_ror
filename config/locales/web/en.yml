@@ -1,0 +1,16 @@
+en:
+  web:
+    posts:
+      index:
+        page_title: "Home"
+      new:
+        page_title: "Post Something"
+      update:
+        success: "Your changes have been submitted"
+        error: "You must complete the form correctly"
+      create:
+        success: "Your post has been created"
+        error: "You must complete the form correctly"
+      destroy:
+        success: "Post deleted successfully"
+        error: "Error deleting post"

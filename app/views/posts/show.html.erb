@@ -21,7 +21,7 @@
       <p class="mb-0"><span class="fs-5">By <%= @post.author %></span> <span class="small"> <%= l(@post.created_at, format: :long) %></span></p>
     </div>
     <div class="col-2 text-end">
-      <a href="#confirmModal" class="btn btn-danger js-delete" data-bs-toggle="modal" data-confirm="are" data-url="<%= post_url(@post) %>" data-method="delete"><i class="bi bi-trash"></i></a>
+      <a href="#confirmModal" class="btn btn-danger js-delete" data-bs-toggle="modal" data-confirm="<%= t("common.delete_confirm.confirm_action_description") %>" data-url="<%= post_url(@post) %>" data-method="delete"><i class="bi bi-trash"></i></a>
     </div>
   </div>
 

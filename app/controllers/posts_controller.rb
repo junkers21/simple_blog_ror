@@ -11,10 +11,10 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      flash.notice = "Your changes have been submitted"
+      flash.notice = I18n.t("web.posts.create.success")
       redirect_to root_url
     else
-      flash.alert = "You must complete the form correctly"
+      flash.alert = I18n.t("web.posts.create.error")
       render "posts/new"
     end
   end
@@ -23,10 +23,10 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
-      flash.notice = "Your changes have been submitted"
+      flash.notice = I18n.t("web.posts.update.success")
       redirect_to root_url
     else
-      flash.alert = "You must complete the form correctly"
+      flash.alert = I18n.t("web.posts.update.error")
       render "posts/edit"
     end
   end
@@ -35,9 +35,9 @@ class PostsController < ApplicationController
 
   def destroy
     if @post.destroy
-      flash.notice = "success"
+      flash.notice = I18n.t("web.posts.destroy.success")
     else
-      flash.alert = "error"
+      flash.alert = I18n.t("web.posts.destroy.error")
     end
     redirect_to root_url
   end

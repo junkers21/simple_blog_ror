@@ -5,7 +5,7 @@
     </div>
 
     <div class="position-absolute top-0 end-0 p-2">
-      <a href="#confirmModal" class="btn btn-danger js-delete" data-bs-toggle="modal" data-confirm="are" data-url="<%= post_url(post) %>" data-method="delete"><i class="bi bi-trash"></i></a>
+      <a href="#confirmModal" class="btn btn-danger js-delete" data-bs-toggle="modal" data-confirm="<%= t("common.delete_confirm.confirm_action_description") %>" data-url="<%= post_url(post) %>" data-method="delete"><i class="bi bi-trash"></i></a>
     </div>
 
     <div class="card-body">
@@ -16,10 +16,10 @@
 
       <div class="row justify-space-between">
         <div class="col">
-          <a href="<%= post_url(post) %>" class="btn btn-primary">See More</a>
+          <a href="<%= post_url(post) %>" class="btn btn-primary"><%= t("common.show") %></a>
         </div>
         <div class="col text-end">
-          <a href="<%= edit_post_url(post) %>" class="btn btn-success"><i class="bi bi-pencil-square me-2"></i>Edit</a>
+          <a href="<%= edit_post_url(post) %>" class="btn btn-success"><i class="bi bi-pencil-square me-2"></i><%= t("common.edit") %></a>
         </div>
       </div>
     </div>

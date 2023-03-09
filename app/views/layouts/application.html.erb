@@ -22,8 +22,8 @@
           </button>
           <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
             <div class="navbar-nav">
-              <a class="nav-link <%= get_active_class("posts", "index") %>" aria-current="page" href="<%= root_url %>">Home</a>
-              <a class="nav-link <%= get_active_class("posts", "new") %>" href="<%= new_post_url %>">Post Something</a>
+              <a class="nav-link <%= get_active_class("posts", "index") %>" aria-current="page" href="<%= root_url %>"><%= t("web.posts.index.page_title") %></a>
+              <a class="nav-link <%= get_active_class("posts", "new") %>" href="<%= new_post_url %>"><%= t("web.posts.new.page_title") %></a>
             </div>
           </div>
         </div>

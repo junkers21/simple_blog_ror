@@ -3,15 +3,15 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title">Confirm action</h5>
+        <h5 class="modal-title"><%= t("common.delete_confirm.confirm_action") %></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
         <p id="confirm_text"></p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancel</button>
-        <a href="" id="confirm_btn" class="btn btn-outline-danger">Delete</a>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"><%= t("common.cancel") %></button>
+        <a href="" id="confirm_btn" class="btn btn-outline-danger"><%= t("common.delete") %></a>
       </div>
     </div>
   </div>
