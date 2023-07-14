@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Test the Docker image
-        run: MYSQL_ROOT_PASSWORD=${{MYSQL_ROOT_PASSWORD}} MYSQL_USERNAME=${{MYSQL_USERNAME}} MYSQL_PASSWORD=${{MYSQL_PASSWORD}} RAILS_MASTER_KEY=${{RAILS_MASTER_KEY}} docker-compose up -d
+        run: docker-compose up -d
   push_to_registry:
     name: Push Docker image
     runs-on: ubuntu-latest
