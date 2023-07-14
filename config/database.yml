@@ -19,7 +19,11 @@ default: &default
 
 development:
   <<: *default
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: <%= ENV['MYSQL_HOST'] %>
   database: simple_blog_ror_development
+  socket: /var/run/mysqld/mysqld.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -27,6 +31,9 @@ development:
 test:
   <<: *default
   database: simple_blog_ror_test
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: <%= ENV['MYSQL_HOST'] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -50,6 +57,9 @@ test:
 #
 production:
   <<: *default
-  database: simple_blog_ror_production
-  username: simple_blog_ror
-  password: <%= ENV["SIMPLE_BLOG_ROR_DATABASE_PASSWORD"] %>
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: <%= ENV['MYSQL_USERNAME'] %>
+  password: <%= ENV['MYSQL_PASSWORD'] %>
+  host: <%= ENV['MYSQL_HOST'] %>
+  database: <%= ENV['MYSQL_NAME'] %>
+  socket: /var/run/mysqld/mysqld.sock

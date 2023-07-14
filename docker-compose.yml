@@ -1,0 +1,51 @@
+version: '3.7'
+services:
+  db:
+    image: mysql
+    restart: always
+    command: [mysqld, -h 127.0.0.1, --default-authentication-plugin=mysql_native_password, --character-set-server=utf8mb4, --collation-server=utf8mb4_unicode_ci, --innodb_monitor_enable=all, --max-connections=1001]
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "127.0.0.1"]
+      timeout: 20s
+      retries: 10
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_USERNAME: ${MYSQL_USERNAME}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+        - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - db:/var/lib/mysqld
+    logging:
+      driver: none
+    ports:
+      - "33061:3306"
+  web:
+    restart: always
+    build: .
+    command: bundle exec rails server -e development -b 0.0.0.0
+    volumes:
+      - .:/app
+      - bundler_gems:/usr/local/bundle/
+      - storage:/storage
+    ports:
+      - "80:3000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      RAILS_MASTER_KEY: ${RAILS_MASTER_KEY}
+      MYSQL_USERNAME: root
+      MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_NAME: simple_blog_ror_production
+      MYSQL_HOST: db
+      RAILS_ENV: development
+      RAILS_MAX_THREADS: 5
+      RAILS_SERVE_STATIC_FILES: 'true'
+      RAILS_LOG_TO_STDOUT: 'true'
+volumes:
+  db:
+  bundler_gems:
+  storage:
