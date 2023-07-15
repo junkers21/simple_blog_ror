@@ -41,6 +41,7 @@ services:
       MYSQL_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_NAME: simple_blog_ror_production
       MYSQL_HOST: db
+      MYSQL_PORT: 3306
       RAILS_ENV: development
       RAILS_MAX_THREADS: 5
       RAILS_SERVE_STATIC_FILES: 'true'

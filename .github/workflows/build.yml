@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - release/docker
+      - release/kubernetes
 jobs:
   push_to_registry:
     name: Push Docker image

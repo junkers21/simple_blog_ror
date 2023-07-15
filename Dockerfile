@@ -12,6 +12,8 @@ RUN gem install bundler
 RUN bundle install
 COPY . .
 
+RUN bundle exec rake assets:precompile
+
 COPY entry.sh /usr/bin/
 RUN chmod +x /usr/bin/entry.sh
 

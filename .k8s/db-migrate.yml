@@ -1,0 +1,23 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: simple-blog
+  labels:
+    app.kubernetes.io/name: simple-blog
+spec:
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: simple-blog
+    spec:
+      containers:
+        - command:
+            - rails
+            - db:prepare
+          envFrom:
+            - configMapRef:
+                name: simple-blog
+          image: ghcr.io/junkers21/simple_blog_ror:latest
+          imagePullPolicy: IfNotPresent
+          name: main
+      restartPolicy: Never

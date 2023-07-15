@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: simple-blog
+data:
+  PORT: "3000"
+  RACK_ENV: production
+  RAILS_ENV: production
+  RAILS_LOG_TO_STDOUT: "true"
+  RAILS_SERVE_STATIC_FILES: "true"
+  SECRET_KEY_BASE: "90975ad39c5ddbc97e3303427f64a9ad"
+  MYSQL_NAME: "defaultdb"
+  MYSQL_USERNAME: "doadmin"
+  MYSQL_PASSWORD: "AVNS_q2FrOePno20RfYjGY_H"
+  MYSQL_HOST: "db-mysql-fra1-79253-do-user-7639524-0.b.db.ondigitalocean.com"
+  MYSQL_PORT: "25060"
