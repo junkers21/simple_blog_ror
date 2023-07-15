@@ -63,5 +63,5 @@ production:
   host: <%= ENV['MYSQL_HOST'] %>
   database: <%= ENV['MYSQL_NAME'] %>
   port: <%= ENV['MYSQL_PORT'] %>
-  sslmode: prefer
+  sslmode: require
   socket: /var/run/mysqld/mysqld.sock
