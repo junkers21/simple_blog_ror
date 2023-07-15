@@ -4,8 +4,8 @@ metadata:
   name: simple-blog
 data:
   PORT: "3000"
-  RACK_ENV: production
-  RAILS_ENV: production
+  RACK_ENV: "production"
+  RAILS_ENV: "production"
   RAILS_LOG_TO_STDOUT: "true"
   RAILS_SERVE_STATIC_FILES: "true"
   RAILS_MASTER_KEY: "90975ad39c5ddbc97e3303427f64a9ad"
@@ -14,3 +14,4 @@ data:
   MYSQL_PASSWORD: "AVNS_q2FrOePno20RfYjGY_H"
   MYSQL_HOST: "db-mysql-fra1-79253-do-user-7639524-0.b.db.ondigitalocean.com"
   MYSQL_PORT: "25060"
+  MYSQL_URL: "mysql://doadmin:AVNS_q2FrOePno20RfYjGY_H@db-mysql-fra1-79253-do-user-7639524-0.b.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED"
