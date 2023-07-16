@@ -6,10 +6,8 @@ spec:
   ports:
     - port: 80
       name: http
-      targetPort: http
     - port: 443
       name: https
-      targetPort: http
   selector:
     app.kubernetes.io/name: simple-blog
     process: web

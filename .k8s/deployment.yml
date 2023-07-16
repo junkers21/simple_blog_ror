@@ -33,7 +33,12 @@ spec:
           name: simple-blog-web
           ports:
             - containerPort: 3000
+              hostPort: 80
               name: http
+              protocol: TCP
+            - containerPort: 3000
+              hostPort: 443
+              name: https
               protocol: TCP
           readinessProbe:
             httpGet:
