@@ -22,14 +22,14 @@ spec:
         app.kubernetes.io/name: simple-blog
         process: web
     spec:
+      imagePullSecrets:
+        - name: ghcr-login-secret
       containers:
         - envFrom:
             - configMapRef:
                 name: simple-blog
           image: ghcr.io/junkers21/simple_blog_ror:latest
           imagePullPolicy: Always
-          imagePullSecrets:
-            - name: ghcr-login-secret
           name: simple-blog-web
           ports:
             - containerPort: 3000
