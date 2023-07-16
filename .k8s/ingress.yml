@@ -15,4 +15,4 @@ spec:
               service:
                 name: simple-blog
                 port:
-                  number: 80
+                  number: 443
