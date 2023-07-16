@@ -8,6 +8,7 @@ jobs:
   push_to_registry:
     name: Push Docker image
     runs-on: ubuntu-latest
+    if: github.ref_name == 'release/docker'
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
