@@ -1,13 +1,14 @@
 apiVersion: networking.k8s.io/v1beta1
 kind: Ingress
 metadata:
-  name: simple-blog-ingress
+  name: simple-blog
 spec:
   ingressClassName: nginx
   rules:
-    - host: 4837d191-f3dc-43b7-b6af-1fdf238a90db.k8s.ondigitalocean.com
-      http:
-        paths:
-          - backend:
-              serviceName: simple-blog-web
-              servicePort: 80
+  - host: 4837d191-f3dc-43b7-b6af-1fdf238a90db.k8s.ondigitalocean.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: simple-blog-web
+          servicePort: 80
