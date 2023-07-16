@@ -32,6 +32,9 @@ jobs:
         with:
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
 
+      - name: Setup ghcr secret
+        run: kubectl create secret docker-registry ghcr-login-secret --docker-server=ghcr.io --docker-username=${{ secrets.GHRC_USER }} --docker-password=${{ secrets.CR_PAT }} --docker-email=${{ secrets.GHRC_EMAIL }}
+
       - name: Save DigitalOcean kubeconfig Production
         run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 k8s-1-27-2-do-0-fra1-1689508975529
 
