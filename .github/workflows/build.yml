@@ -5,7 +5,23 @@ on:
       - release/docker
       - release/kubernetes
 jobs:
+  push_to_registry:
+    name: Push Docker image
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v3
+      - name: Login to GitHub Container Registry
+        run: echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u junkers21 --password-stdin
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          tags:  |
+            ghcr.io/junkers21/simple_blog_ror:latest
+            ghcr.io/junkers21/simple_blog_ror:${{ github.sha }}
   deploy_to_kubernetes:
+    needs: push_to_registry
     runs-on: ubuntu-latest
     steps:
       - name: Checkout source code
@@ -24,6 +40,9 @@ jobs:
 
       - name: Setup ghcr secret
         run: kubectl create secret docker-registry ghcr-login-secret --docker-server=ghcr.io --docker-username=${{ secrets.GHRC_USER }} --docker-password=${{ secrets.GHRC_PAT }} --docker-email=${{ secrets.GHRC_EMAIL }}
+
+      - name: Setting up Ingress nginx
+        run: kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.1/deploy/static/provider/do/deploy.yaml
 
       - name: Kubernetes rollout the latest image
         run: kubectl apply -f $GITHUB_WORKSPACE/.k8s
