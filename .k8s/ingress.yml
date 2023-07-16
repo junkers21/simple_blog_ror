@@ -8,5 +8,5 @@ spec:
       http:
         paths:
           - backend:
-              serviceName: simple-blog-web
-              servicePort: 80
+            serviceName: simple-blog-web
+            servicePort: 80
