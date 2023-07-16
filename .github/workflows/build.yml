@@ -17,4 +17,25 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: "ghcr.io/junkers21/simple_blog_ror:latest"
+          tags:  |
+            ghcr.io/junkers21/simple_blog_ror:latest
+            ghcr.io/junkers21/simple_blog_ror:${{ github.sha }}
+  deploy_to_kubernetes:
+    needs: push_to_registry
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Install doctl
+        uses: digitalocean/action-doctl@v2
+        with:
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+
+      - name: Save DigitalOcean kubeconfig Production
+        run: doctl kubernetes cluster kubeconfig save --expiry-seconds 600 k8s-1-27-2-do-0-fra1-1689508975529
+
+      - name: Kubernetes rollout the latest image
+        run: kubectl apply -f $GITHUB_WORKSPACE/.k8s/deployment.yml
+
+      - name: Verify deployment
+        run: kubectl rollout status deployment/simple-blog

@@ -1,0 +1,20 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: setup
+spec:
+  template:
+    metadata:
+      name: setup
+    spec:
+      containers:
+        - name: setup
+          image: ghcr.io/junkers21/simple_blog_ror:latest
+          imagePullPolicy: Always
+          command:
+            - rails
+            - db:prepare
+          envFrom:
+            - configMapRef:
+                name: simple-blog
+      restartPolicy: Never
