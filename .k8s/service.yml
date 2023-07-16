@@ -4,8 +4,10 @@ metadata:
   name: simple-blog
 spec:
   ports:
+    - port: 80
+      targetPort: http
     - port: 443
-      targetPort: 3000
+      targetPort: https
   selector:
     app.kubernetes.io/name: simple-blog
     process: web

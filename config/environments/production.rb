@@ -91,5 +91,5 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  Rails.application.routes.default_url_options = {:host=>"4837d191-f3dc-43b7-b6af-1fdf238a90db.k8s.ondigitalocean.com", :port=>"3000"}
+  Rails.application.routes.default_url_options = {:host=>"4837d191-f3dc-43b7-b6af-1fdf238a90db.k8s.ondigitalocean.com", :port=>"443"}
 end
