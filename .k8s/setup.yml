@@ -11,6 +11,8 @@ spec:
         - name: setup
           image: ghcr.io/junkers21/simple_blog_ror:latest
           imagePullPolicy: Always
+          imagePullSecrets:
+            - name: ghcr-login-secret
           command:
             - rails
             - db:prepare
