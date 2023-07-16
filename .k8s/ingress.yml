@@ -1,13 +1,18 @@
-apiVersion: networking.k8s.io/v1beta1
+apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: simple-blog-ingress
+  annotations:
+    kubernetes.io/ingress.class: nginx
 spec:
   rules:
     - host: 4837d191-f3dc-43b7-b6af-1fdf238a90db.k8s.ondigitalocean.com
       http:
         paths:
-          - backend:
-              serviceName: simple-blog
-              servicePort: 80
-            path: /
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: simple-blog
+                port:
+                  number: 80
