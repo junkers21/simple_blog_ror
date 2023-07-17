@@ -5,7 +5,7 @@ metadata:
   labels:
     app: simple-blog
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - protocol: TCP
       name: http
