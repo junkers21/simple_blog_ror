@@ -15,6 +15,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: simple-blog
+                name: simple-blog-service
                 port:
                   number: 80
