@@ -1,10 +1,11 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: simple-blog-ingress
-  namespace: default
+  name: simple-blog
+  namespace: simple-blog
   annotations:
-    kubernetes.io/ingress.class: nginx
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
     - host: 4837d191-f3dc-43b7-b6af-1fdf238a90db.k8s.ondigitalocean.com
@@ -16,4 +17,4 @@ spec:
               service:
                 name: simple-blog
                 port:
-                  number: 3000
+                  number: 80
