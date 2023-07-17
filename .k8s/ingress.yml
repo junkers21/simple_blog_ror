@@ -4,7 +4,7 @@ metadata:
   name: simple-blog
   namespace: default
   annotations:
-    kubernetes.io/ingress.class: "nginx"
+    ingressClassName: "nginx"
     nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
