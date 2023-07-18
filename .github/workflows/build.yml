@@ -36,6 +36,9 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: MRSK deploy
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.2.1'
         run: |
           gem install mrsk
           mrsk deploy -vvvv --skip_push
