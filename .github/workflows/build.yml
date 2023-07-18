@@ -38,7 +38,7 @@ jobs:
       - name: Ruby setup
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: '3.2.1'
+          ruby-version: '3.2'
 
       - name: MRSK deploy
         run: |
