@@ -36,9 +36,10 @@ jobs:
           cache-to: type=gha,mode=max
 
       - name: Ruby setup
-        uses: actions/setup-ruby@v1
+        uses: ruby/setup-ruby@v1
         with:
-          ruby-version: '3.2'
+          bundler-cache: true
+          ruby-version: '3.2.1'
 
       - name: MRSK deploy
         run: |
