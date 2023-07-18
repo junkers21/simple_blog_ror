@@ -31,9 +31,11 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: ghcr.io/junkers21/simple_blog_ror:${{ github.sha }}, ghcr.io/junkers21/simple_blog_ror:latest
+          tags: ghcr.io/junkers21/simple-blog-mrsk:${{ github.sha }}, ghcr.io/junkers21/simple-blog-mrsk:latest
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: MRSK deploy
-        run: 'mrsk deploy -vvvv --skip_push'
+        run: |
+          gem install mrsk
+          mrsk deploy -vvvv --skip_push
