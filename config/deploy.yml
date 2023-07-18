@@ -2,12 +2,11 @@
 service: simple-blog
 
 # Name of the container image.
-image: junkers21/simple-blog-mrsk
+image: junkers21/simple_blog_ror_mrsk
 
 # Deploy to these servers.
 servers:
-  - 165.227.157.214
-  - 165.227.155.127
+  - 104.248.142.97
 
 # Credentials for your image host.
 registry:

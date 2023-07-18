@@ -2,7 +2,7 @@ name: Build And Push To Registry
 on:
   push:
     branches:
-      - release/docker
+      - release/mrsk
 jobs:
   push_to_registry:
     name: Push Docker image
@@ -16,4 +16,4 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           push: true
-          tags: "ghcr.io/junkers21/simple_blog_ror:latest"
+          tags: "ghcr.io/junkers21/simple_blog_ror_mrsk:latest"
