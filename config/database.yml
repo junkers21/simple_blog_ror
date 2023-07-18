@@ -19,11 +19,7 @@ default: &default
 
 development:
   <<: *default
-  username: <%= ENV['MYSQL_USERNAME'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
-  host: <%= ENV['MYSQL_HOST'] %>
-  database: simple_blog_ror_development
-  socket: /var/run/mysqld/mysqld.sock
+  url: <%= ENV['MYSQL_URL'] %>
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -57,9 +53,4 @@ test:
 #
 production:
   <<: *default
-  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: <%= ENV['MYSQL_USERNAME'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
-  host: <%= ENV['MYSQL_HOST'] %>
-  database: <%= ENV['MYSQL_NAME'] %>
-  socket: /var/run/mysqld/mysqld.sock
+  url: <%= Rails.application.credentials.database_url %>
