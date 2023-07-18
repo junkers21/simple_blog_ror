@@ -2,7 +2,7 @@
 service: simple-blog
 
 # Name of the container image.
-image: junkers21/simple-blog-mrsk:latest
+image: junkers21/simple-blog-mrsk
 
 # Deploy to these servers.
 servers:

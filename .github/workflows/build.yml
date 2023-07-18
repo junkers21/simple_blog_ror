@@ -2,7 +2,7 @@ name: Build And Push To Registry
 on:
   push:
     branches:
-      - release/mrsk
+      - release/docker
 jobs:
   push_to_registry:
     name: Push Docker image
