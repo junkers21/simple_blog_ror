@@ -2,9 +2,7 @@ name: Build And Push To Registry
 on:
   push:
     branches:
-      - release/mrsk
-  workflow_dispatch:
-
+      - release/docker
 jobs:
   push_to_registry:
     name: Push Docker image
@@ -27,11 +25,11 @@ jobs:
           ruby-version: '3.2.1'
 
       - name: MRSK
-        id: mrsk
         env:
           MRSK_REGISTRY_PASSWORD: ${{ secrets.CR_PAT }}
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
           RAILS_ENV: production
           DOCKER_BUILDKIT: 1
         run: |
-          ./bin/mrsk deploy --quiet
+          gem install mrsk
+          mrsk deploy -vvvv --skip_push
