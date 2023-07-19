@@ -6,7 +6,7 @@ image: junkers21/simple-blog-mrsk
 
 # Deploy to these servers.
 servers:
-  - 104.248.142.97
+  - 164.92.185.29
 
 # Credentials for your image host.
 registry:
