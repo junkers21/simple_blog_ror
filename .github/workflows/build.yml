@@ -24,6 +24,16 @@ jobs:
           bundler-cache: true
           ruby-version: '3.2.1'
 
+      - name: Login to GitHub Container Registry
+        run: echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u junkers21 --password-stdin
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v4
+        with:
+          push: true
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
       - name: MRSK
         env:
           MRSK_REGISTRY_PASSWORD: ${{ secrets.CR_PAT }}
@@ -32,4 +42,4 @@ jobs:
           DOCKER_BUILDKIT: 1
         run: |
           gem install mrsk
-          mrsk deploy
+          mrsk deploy --skip_build
