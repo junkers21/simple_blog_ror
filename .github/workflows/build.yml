@@ -2,7 +2,9 @@ name: Build And Push To Registry
 on:
   push:
     branches:
-      - release/docker
+      - release/mrsk
+  workflow_dispatch:
+
 jobs:
   push_to_registry:
     name: Push Docker image
@@ -11,29 +13,12 @@ jobs:
       - name: Check out the repo
         uses: actions/checkout@v3
 
-      - name: set ssh
-        run: |
-          mkdir -p ~/.ssh/
-          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_ed25519
-
-      - name: set env file
-        run: |
-          echo "RAILS_MASTER_KEY= ${{ secrets.RAILS_MASTER_KEY }}" >> .env
-          echo "MRSK_REGISTRY_PASSWORD= ${{ secrets.CR_PAT }}" >> .env
-
-      - name: Login to GitHub Container Registry
-        run: echo ${{ secrets.CR_PAT }} | docker login ghcr.io -u junkers21 --password-stdin
+      - uses: webfactory/ssh-agent@v0.7.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
 
       - name: Set up Docker Buildx.
         uses: docker/setup-buildx-action@v2
-
-      - name: Build and push Docker image
-        uses: docker/build-push-action@v4
-        with:
-          push: true
-          tags: ghcr.io/junkers21/simple-blog-mrsk:${{ github.sha }}, ghcr.io/junkers21/simple-blog-mrsk:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
 
       - name: Ruby setup
         uses: ruby/setup-ruby@v1
@@ -41,7 +26,12 @@ jobs:
           bundler-cache: true
           ruby-version: '3.2.1'
 
-      - name: MRSK deploy
+      - name: MRSK
+        id: mrsk
+        env:
+          MRSK_REGISTRY_PASSWORD: ${{ secrets.CR_PAT }}
+          RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
+          RAILS_ENV: production
+          DOCKER_BUILDKIT: 1
         run: |
-          gem install mrsk
-          mrsk deploy -vvvv --skip_push
+          ./bin/mrsk deploy --quiet
