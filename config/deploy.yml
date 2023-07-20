@@ -6,10 +6,7 @@ image: junkers21/simple-blog-mrsk
 
 # Deploy to these servers.
 servers:
-  web:
-    traefik: false
-    hosts:
-      - 164.92.185.29
+  - 138.68.74.112
 
 # Credentials for your image host.
 registry:
@@ -76,4 +73,4 @@ healthcheck:
   path: /up
   port: 3000
   max_attempts: 10
-  interval: 5s
+  interval: 10s

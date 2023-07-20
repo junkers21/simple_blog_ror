@@ -3,7 +3,7 @@
 
 # Make sure it matches the Ruby version in .ruby-version and Gemfile
 ARG RUBY_VERSION=3.2.1
-FROM ruby:$RUBY_VERSION-slim as base
+FROM registry.docker.com/library/ruby:$RUBY_VERSION-slim as base
 
 # Rails app lives here
 WORKDIR /rails
