@@ -6,24 +6,26 @@ image: junkers21/simple-blog-mrsk
 
 # Deploy to these servers.
 servers:
-  - 138.68.74.112
+  web:
+    hosts:
+      # set to the public ip of the host
+      - 134.209.240.208
+    options:
+      add-host: host.docker.internal:host-gateway
 
 # Credentials for your image host.
 registry:
   # Specify the registry server, if you're not using Docker Hub
   server: ghcr.io
   username: junkers21
-
   # Always use an access token rather than real password when possible.
   password:
     - MRSK_REGISTRY_PASSWORD
 
-# Inject ENV variables into containers (secrets come from .env).
-# env:
-#   clear:
-#     DB_HOST: 192.168.0.2
-#   secret:
-#     - RAILS_MASTER_KEY
+env:
+  clear:
+    DATABASE_URL: "mysql2://mysql@host.docker.internal:3306/app"
+    REDIS_URL: "redis://host.docker.internal:6379/0"
 
 # Use a different ssh user than root
 # ssh:
@@ -40,27 +42,22 @@ registry:
 #     host: ssh://app@192.168.0.1
 
 # Use accessory services (secrets come from .env).
-# accessories:
-#   db:
-#     image: mysql:8.0
-#     host: 192.168.0.2
-#     port: 3306
-#     env:
-#       clear:
-#         MYSQL_ROOT_HOST: '%'
-#       secret:
-#         - MYSQL_ROOT_PASSWORD
-#     files:
-#       - config/mysql/production.cnf:/etc/mysql/my.cnf
-#       - db/production.sql.erb:/docker-entrypoint-initdb.d/setup.sql
-#     directories:
-#       - data:/var/lib/mysql
-#   redis:
-#     image: redis:7.0
-#     host: 192.168.0.2
-#     port: 6379
-#     directories:
-#       - data:/data
+accessories:
+  db:
+    image: mysql:8.0
+    host: 134.209.240.208
+    port: "172.17.0.1:5432:3306"
+    files:
+      - config/mysql/production.cnf:/etc/mysql/my.cnf
+      - db/production.sql.erb:/docker-entrypoint-initdb.d/setup.sql
+    directories:
+      - data:/var/lib/mysql
+  redis:
+    image: redis:7.0
+    host: 134.209.240.208
+    port: "172.17.0.1:6379:6379"
+    directories:
+      - data:/data
 
 # Configure custom arguments for Traefik
 # traefik:
@@ -73,4 +70,4 @@ healthcheck:
   path: /up
   port: 3000
   max_attempts: 10
-  interval: 10s
+  interval: 15s
