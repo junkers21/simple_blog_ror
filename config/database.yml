@@ -56,3 +56,4 @@ production:
   username: <%= ENV['MYSQL_USERNAME'] %>
   password: <%= ENV['MYSQL_PASSWORD'] %>
   host: <%= ENV['MYSQL_HOST'] %>
+  socket: /var/run/mysqld/mysqlx.sock
