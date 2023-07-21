@@ -10,9 +10,9 @@ servers:
     hosts:
       - 134.209.240.208
     labels:
-      traefik.http.routers.kiqr_cloud.rule: Host(`msrk.junkers21.ovh`)
+      traefik.http.routers.kiqr_cloud.rule: "Host(`msrk.junkers21.ovh`)"
       traefik.http.routers.kiqr_cloud_secure.entrypoints: websecure
-      traefik.http.routers.kiqr_cloud_secure.rule: Host(`msrk.junkers21.ovh`)
+      traefik.http.routers.kiqr_cloud_secure.rule: "Host(`msrk.junkers21.ovh`)"
       traefik.http.routers.kiqr_cloud_secure.tls: true
       traefik.http.routers.kiqr_cloud_secure.tls.certresolver: letsencrypt
       # mkdir -p /letsencrypt && touch /letsencrypt/acme.json && chmod 600 /letsencrypt/acme.json
