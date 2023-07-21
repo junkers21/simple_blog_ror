@@ -15,11 +15,11 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: root
   password: root
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
   url: <%= Rails.application.credentials.database_url %>
+  socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -56,4 +56,4 @@ production:
   username: <%= ENV['MYSQL_USERNAME'] %>
   password: <%= ENV['MYSQL_PASSWORD'] %>
   host: <%= ENV['MYSQL_HOST'] %>
-  socket: /var/run/mysqld/mysqlx.sock
+  port: 3306

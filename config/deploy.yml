@@ -25,6 +25,7 @@ registry:
 env:
   clear:
     REDIS_URL: "redis://host.docker.internal:6379/0"
+    MYSQL_HOST: "host.docker.internal"
 
 # Use a different ssh user than root
 # ssh:
@@ -71,4 +72,4 @@ healthcheck:
   path: /up
   port: 3000
   max_attempts: 10
-  interval: 15s
+  interval: 20s
