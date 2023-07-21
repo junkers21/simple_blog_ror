@@ -26,6 +26,9 @@ env:
   clear:
     REDIS_URL: "redis://host.docker.internal:6379/0"
     MYSQL_HOST: "host.docker.internal"
+    MYSQL_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+    MYSQL_PASSWORD: MYSQL_PASSWORD
+    MYSQL_USER: MYSQL_USER
 
 # Use a different ssh user than root
 # ssh:
