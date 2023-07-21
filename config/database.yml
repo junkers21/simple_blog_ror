@@ -53,6 +53,7 @@ test:
 #
 production:
   <<: *default
+  database: mrsk_production
   username: <%= ENV['MYSQL_USER'] %>
   password: <%= ENV['MYSQL_PASSWORD'] %>
   host: <%= ENV['MYSQL_HOST'] %>
