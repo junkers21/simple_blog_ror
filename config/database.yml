@@ -54,7 +54,7 @@ test:
 production:
   <<: *default
   database: mrsk_production
-  username: <%= ENV['MYSQL_USER'] %>
-  password: <%= ENV['MYSQL_PASSWORD'] %>
+  username: root
+  password: <%= ENV['MYSQL_ROOT_PASSWORD'] %>
   host: <%= ENV['MYSQL_HOST'] %>
   port: 3306

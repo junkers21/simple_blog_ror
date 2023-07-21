@@ -28,8 +28,6 @@ env:
     MYSQL_HOST: "host.docker.internal"
   secret:
     - MYSQL_ROOT_PASSWORD
-    - MYSQL_PASSWORD
-    - MYSQL_USER
 
 # Use a different ssh user than root
 # ssh:
@@ -51,6 +49,9 @@ accessories:
     image: mysql:8.0
     host: 134.209.240.208
     port: "172.17.0.1:3306:3306"
+    env:
+      secret:
+        - MYSQL_ROOT_PASSWORD
     directories:
       - data:/var/lib/mysql
   redis:
