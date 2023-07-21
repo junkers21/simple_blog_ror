@@ -51,7 +51,7 @@ accessories:
       secret:
         - MYSQL_ROOT_PASSWORD
         - MYSQL_PASSWORD
-        - MYSQL_USERNAME
+        - MYSQL_USER
     directories:
       - data:/var/lib/mysql
   redis:

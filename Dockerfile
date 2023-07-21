@@ -49,8 +49,6 @@ COPY --link . .
 # Precompile bootsnap code for faster boot times
 RUN bundle exec bootsnap precompile app/ lib/
 
-ARG DATABASE_URL="mysql2://mysql@host.docker.internal:3306/app"
-
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
 RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
