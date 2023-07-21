@@ -24,7 +24,6 @@ registry:
 
 env:
   clear:
-    DATABASE_URL: "mysql2://mysql@host.docker.internal:3306/app"
     REDIS_URL: "redis://host.docker.internal:6379/0"
 
 # Use a different ssh user than root
@@ -47,9 +46,11 @@ accessories:
     image: mysql:8.0
     host: 134.209.240.208
     port: "172.17.0.1:5432:3306"
-    files:
-      - config/mysql/production.cnf:/etc/mysql/my.cnf
-      - db/production.sql.erb:/docker-entrypoint-initdb.d/setup.sql
+    env:
+      secret:
+        - MYSQL_ROOT_PASSWORD
+        - MYSQL_PASSWORD
+        - MYSQL_USERNAME
     directories:
       - data:/var/lib/mysql
   redis:
