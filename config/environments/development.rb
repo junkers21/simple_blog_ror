@@ -34,7 +34,7 @@ Rails.application.configure do
   end
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :digitalocean
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = false
@@ -68,5 +68,15 @@ Rails.application.configure do
   # Uncomment if you wish to allow Action Cable access from any origin.
   # config.action_cable.disable_request_forgery_protection = true
 
-  Rails.application.routes.default_url_options = {:host=>"localhost", :port=>"80"}
+  Rails.application.routes.default_url_options = {:host=>"0.0.0.0", :port=>"3000"}
+
+  config.action_mailer.smtp_settings = {
+    address:              Rails.application.credentials.dig(:mail, :address),
+    port:                 Rails.application.credentials.dig(:mail, :port),
+    domain:               Rails.application.credentials.dig(:mail, :domain),
+    user_name:            Rails.application.credentials.dig(:mail, :user_name),
+    password:             Rails.application.credentials.dig(:mail, :password),
+    authentication:       Rails.application.credentials.dig(:mail, :authentication),
+    enable_starttls_auto: true
+  }
 end

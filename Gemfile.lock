@@ -107,6 +107,22 @@ GEM
       public_suffix (>= 2.0.2, < 6.0)
     autoprefixer-rails (10.4.13.0)
       execjs (~> 2)
+    aws-eventstream (1.2.0)
+    aws-partitions (1.791.0)
+    aws-sdk-core (3.178.0)
+      aws-eventstream (~> 1, >= 1.0.2)
+      aws-partitions (~> 1, >= 1.651.0)
+      aws-sigv4 (~> 1.5)
+      jmespath (~> 1, >= 1.6.1)
+    aws-sdk-kms (1.71.0)
+      aws-sdk-core (~> 3, >= 3.177.0)
+      aws-sigv4 (~> 1.1)
+    aws-sdk-s3 (1.131.0)
+      aws-sdk-core (~> 3, >= 3.177.0)
+      aws-sdk-kms (~> 1)
+      aws-sigv4 (~> 1.6)
+    aws-sigv4 (1.6.0)
+      aws-eventstream (~> 1, >= 1.0.2)
     bindex (0.8.1)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -132,8 +148,13 @@ GEM
       irb (>= 1.5.0)
       reline (>= 0.3.1)
     erubi (1.12.0)
+    et-orbi (1.2.7)
+      tzinfo
     execjs (2.8.1)
     ffi (1.15.5)
+    fugit (1.8.1)
+      et-orbi (~> 1, >= 1.2.7)
+      raabro (~> 1.4)
     globalid (1.1.0)
       activesupport (>= 5.0)
     i18n (1.12.0)
@@ -150,6 +171,7 @@ GEM
     jbuilder (2.11.5)
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
+    jmespath (1.6.2)
     loofah (2.21.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.12.0)
@@ -185,6 +207,7 @@ GEM
     public_suffix (5.0.1)
     puma (5.6.5)
       nio4r (~> 2.0)
+    raabro (1.4.0)
     racc (1.6.2)
     rack (2.2.6.3)
     rack-session (1.0.1)
@@ -202,6 +225,8 @@ GEM
       nokogiri (~> 1.14)
     rake (13.0.6)
     redis (4.8.1)
+    redis-client (0.14.1)
+      connection_pool
     regexp_parser (2.7.0)
     reline (0.3.6)
       io-console (~> 0.5)
@@ -221,6 +246,15 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sidekiq (7.0.8)
+      concurrent-ruby (< 2)
+      connection_pool (>= 2.3.0)
+      rack (>= 2.2.4)
+      redis-client (>= 0.11.0)
+    sidekiq-cron (1.10.1)
+      fugit (~> 1.8)
+      globalid (>= 1.0.1)
+      sidekiq (>= 6)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
       rack (>= 2.2.4, < 4)
@@ -265,6 +299,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_storage_validations
+  aws-sdk-s3
   bootsnap
   bootstrap (~> 5.2.3)
   capybara
@@ -277,6 +312,8 @@ DEPENDENCIES
   rails!
   redis (~> 4.0)
   selenium-webdriver
+  sidekiq
+  sidekiq-cron
   sprockets-rails
   stimulus-rails
   turbo-rails

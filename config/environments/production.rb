@@ -38,7 +38,7 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = "X-Accel-Redirect" # for NGINX
 
   # Store uploaded files on the local file system (see config/storage.yml for options).
-  config.active_storage.service = :local
+  config.active_storage.service = :digitalocean
 
   # Mount Action Cable outside main process or domain.
   # config.action_cable.mount_path = nil
@@ -92,4 +92,14 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
   Rails.application.routes.default_url_options = {:host=>"msrk.junkers21.ovh"}
+
+  config.action_mailer.smtp_settings = {
+    address:              Rails.application.credentials.dig(:mail, :address),
+    port:                 Rails.application.credentials.dig(:mail, :port),
+    domain:               Rails.application.credentials.dig(:mail, :domain),
+    user_name:            Rails.application.credentials.dig(:mail, :user_name),
+    password:             Rails.application.credentials.dig(:mail, :password),
+    authentication:       Rails.application.credentials.dig(:mail, :authentication),
+    enable_starttls_auto: true
+  }
 end

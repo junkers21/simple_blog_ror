@@ -1,0 +1,3 @@
+notify_job:
+  cron: "*/2 * * * *"
+  class: "NotifyJob"

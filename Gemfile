@@ -74,4 +74,7 @@ end
 # Project Gems
 gem 'bootstrap', '~> 5.2.3'
 gem 'active_storage_validations'
+gem 'sidekiq'
+gem "sidekiq-cron"
+gem "aws-sdk-s3", require: false
 

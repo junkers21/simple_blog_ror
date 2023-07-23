@@ -18,7 +18,7 @@ default: &default
 
 development:
   <<: *default
-  url: <%= Rails.application.credentials.database_url %>
+  database: simple_blog_ror_development
   socket: /tmp/mysql.sock
 
 # Warning: The database defined as "test" will be erased and
