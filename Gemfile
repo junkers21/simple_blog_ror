@@ -77,4 +77,6 @@ gem 'active_storage_validations'
 gem 'sidekiq'
 gem "sidekiq-cron"
 gem "aws-sdk-s3", require: false
+gem "sentry-ruby"
+gem "sentry-rails"
 
