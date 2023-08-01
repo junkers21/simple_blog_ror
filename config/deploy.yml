@@ -3,8 +3,6 @@ service: simple-blog
 
 # Name of the container image.
 image: junkers21/simple-blog-mrsk
-ssh:
-  user: ubuntu
 
 # Deploy to these servers.
 servers:
