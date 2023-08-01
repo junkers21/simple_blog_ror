@@ -61,7 +61,7 @@ accessories:
     port: "172.17.0.1:3306:3306"
     env:
       secret:
-        MARIADB_ROOT_PASSWORD: MYSQL_ROOT_PASSWORD
+        - MYSQL_ROOT_PASSWORD
     directories:
       - data:/var/lib/mysql
   redis:
