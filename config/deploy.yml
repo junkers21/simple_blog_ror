@@ -9,14 +9,14 @@ servers:
   sidekiq:
     cmd: bin/sidekiq
     hosts:
-      - 165.227.160.35
+      - aduratech.junkers21.ovh
   web:
     hosts:
-      - 165.227.160.35
+      - aduratech.junkers21.ovh
     labels:
-      traefik.http.routers.kiqr_cloud.rule: "Host(`msrk.junkers21.ovh`)"
+      traefik.http.routers.kiqr_cloud.rule: "Host(`aduratech.junkers21.ovh`)"
       traefik.http.routers.kiqr_cloud_secure.entrypoints: websecure
-      traefik.http.routers.kiqr_cloud_secure.rule: "Host(`msrk.junkers21.ovh`)"
+      traefik.http.routers.kiqr_cloud_secure.rule: "Host(`aduratech.junkers21.ovh`)"
       traefik.http.routers.kiqr_cloud_secure.tls: true
       traefik.http.routers.kiqr_cloud_secure.tls.certresolver: letsencrypt
       # mkdir -p /letsencrypt && touch /letsencrypt/acme.json && chmod 600 /letsencrypt/acme.json
@@ -57,7 +57,7 @@ env:
 accessories:
   db:
     image: mysql:8.0
-    host: 165.227.160.35
+    host: aduratech.junkers21.ovh
     port: "172.17.0.1:3306:3306"
     env:
       secret:
@@ -66,7 +66,7 @@ accessories:
       - data:/var/lib/mysql
   redis:
     image: redis:7.0
-    host: 165.227.160.35
+    host: aduratech.junkers21.ovh
     port: "172.17.0.1:6379:6379"
     directories:
       - data:/data
