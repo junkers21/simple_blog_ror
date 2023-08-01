@@ -10,6 +10,8 @@ servers:
     cmd: bin/sidekiq
     hosts:
       - aduratech.junkers21.ovh
+    options:
+      platform: linux/arm64
   web:
     hosts:
       - aduratech.junkers21.ovh
@@ -22,6 +24,7 @@ servers:
       # mkdir -p /letsencrypt && touch /letsencrypt/acme.json && chmod 600 /letsencrypt/acme.json
     options:
       add-host: host.docker.internal:host-gateway
+      platform: linux/arm64
 
 # Credentials for your image host.
 registry:
@@ -56,7 +59,9 @@ env:
 # Use accessory services (secrets come from .env).
 accessories:
   db:
-    image: mariadb
+    options:
+      platform: linux/arm64
+    image: mysql:8.0
     host: aduratech.junkers21.ovh
     port: "172.17.0.1:3306:3306"
     env:
