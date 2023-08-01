@@ -47,6 +47,8 @@ env:
 #   user: app
 
 # Configure builder setup.
+builder:
+  local: arm/v7
 # builder:
 #   args:
 #     RUBY_VERSION: 3.2.0
