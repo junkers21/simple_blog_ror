@@ -11,7 +11,7 @@ servers:
     hosts:
       - aduratech.junkers21.ovh
     options:
-      platform: linux/arm64
+      platform: linux/arm/v7
   web:
     hosts:
       - aduratech.junkers21.ovh
@@ -24,7 +24,7 @@ servers:
       # mkdir -p /letsencrypt && touch /letsencrypt/acme.json && chmod 600 /letsencrypt/acme.json
     options:
       add-host: host.docker.internal:host-gateway
-      platform: linux/arm64
+      platform: linux/arm/v7
 
 # Credentials for your image host.
 registry:
@@ -45,10 +45,11 @@ env:
 # Use a different ssh user than root
 # ssh:
 #   user: app
-
-# Configure builder setup.
 builder:
-  local: arm/v7
+  remote:
+    arch: arm/v7
+    host: ssh://root@aduratech.junkers21.ovh
+# Configure builder setup.
 # builder:
 #   args:
 #     RUBY_VERSION: 3.2.0
@@ -62,7 +63,7 @@ builder:
 accessories:
   db:
     options:
-      platform: linux/arm64
+      platform: linux/arm/v7
     image: mysql:8.0
     host: aduratech.junkers21.ovh
     port: "172.17.0.1:3306:3306"
