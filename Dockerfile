@@ -56,8 +56,8 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 # Final stage for app image
 FROM base
 
-RUN apt-get update -qq && \
-    apt-get install --no-install-recommends -y curl default-mysql-client libsqlite3-0 libvips postgresql-client nodejs && \
+RUN apt update -qq && \
+    apt install --no-install-recommends -y curl default-mysql-client libsqlite3-0 libvips postgresql-client nodejs && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Run and own the application files as a non-root user for security
