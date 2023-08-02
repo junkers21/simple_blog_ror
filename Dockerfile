@@ -19,8 +19,8 @@ ENV RAILS_ENV="production" \
 FROM base as build
 
 # Install packages need to build gems and node modules
-RUN apt update -qq && \
-    apt install -y build-essential curl default-libmysqlclient-dev git libpq-dev libvips node-gyp pkg-config python-is-python3 nodejs
+RUN apt-get update -qq && \
+    apt-get install -y build-essential curl default-libmysqlclient-dev git libpq-dev libvips node-gyp pkg-config python-is-python3 nodejs
 
 # Install JavaScript dependencies
 ARG NODE_VERSION=19.7.0
@@ -56,9 +56,9 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 # Final stage for app image
 FROM base
 
-RUN apt update -qq && \
-    apt install --no-install-recommends -y curl default-mysql-client libsqlite3-0 libvips postgresql-client nodejs && \
-    rm -rf /var/lib/apt/lists /var/cache/apt/archives
+RUN apt-get update -qq
+RUN apt-get install --no-install-recommends -y curl default-mysql-client libsqlite3-0 libvips postgresql-client nodejs
+RUN rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 # Run and own the application files as a non-root user for security
 RUN useradd rails
