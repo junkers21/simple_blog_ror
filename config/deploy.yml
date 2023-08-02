@@ -10,8 +10,6 @@ servers:
     cmd: bin/sidekiq
     hosts:
       - aduratech.junkers21.ovh
-    options:
-      platform: linux/arm/v8
   web:
     hosts:
       - aduratech.junkers21.ovh
@@ -24,7 +22,6 @@ servers:
       # mkdir -p /letsencrypt && touch /letsencrypt/acme.json && chmod 600 /letsencrypt/acme.json
     options:
       add-host: host.docker.internal:host-gateway
-      platform: linux/arm/v8
 
 # Credentials for your image host.
 registry:
@@ -64,9 +61,7 @@ builder:
 # Use accessory services (secrets come from .env).
 accessories:
   db:
-    options:
-      platform: linux/arm/v8
-    image: mysql:8.0
+    image: arm64v8/mysql:8.0
     host: aduratech.junkers21.ovh
     port: "172.17.0.1:3306:3306"
     env:
@@ -75,7 +70,7 @@ accessories:
     directories:
       - data:/var/lib/mysql
   redis:
-    image: redis:7.0
+    image: arm64v8/redis:7.0
     host: aduratech.junkers21.ovh
     port: "172.17.0.1:6379:6379"
     directories:
