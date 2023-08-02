@@ -46,7 +46,7 @@ builder:
   args:
     RUBY_VERSION: 3.2.1
   remote:
-    arch: arm/v8
+    arch: arm/v7
     host: ssh://root@aduratech.junkers21.ovh
 # Configure builder setup.
 # builder:
